@@ -1,15 +1,21 @@
 const mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 
-const companySchema = mongoose.Schema(
+const homeworkSchema = mongoose.Schema(
   {
-    companyName: {
+    homeworkName: {
       type: String,
       required: false,
       index: true,
       unique:true
     },
-    careerUrl: {
+    description: {
+      type: String,
+    },
+    points: {
+      type: Number,
+    },
+    homeworkIndex: {
       type: String,
     },
   
@@ -19,7 +25,7 @@ const companySchema = mongoose.Schema(
   }
 );
 
-companySchema.plugin(uniqueValidator);
-const Company = mongoose.model('Company', companySchema);
+homeworkSchema.plugin(uniqueValidator);
+const Homework = mongoose.model('Homework', homeworkSchema);
 
-module.exports = Company;
+module.exports = Homework;
