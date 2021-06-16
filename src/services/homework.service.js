@@ -1,45 +1,43 @@
+const Homework = require('../models/homework.model');
 
-
-const Company = require('../models/company.model');
-
-const createNewCompany = async (input) => {
-  const company = await Company.create(input);
+const createNewHomework = async (input) => {
+  const homework = await Homework.create(input);
   ;
-  return company;
+  return homework;
 };
 
-const editCompany = async (input) => {
+const editHomework = async (input) => {
   try {
 
-    const company = await Company.findOneAndUpdate({
+    const homework = await Homework.findOneAndUpdate({
       _id:input._id
     },{$set:{...input}})
     ;
-    return company;
+    return homework;
   }
   catch(e){
     console.log(e,'ERROR');
   }
 };
 
-const getAllCompanies = async () => {
-  const company = await Company.find({});
-  return company;
+const getAllHomeworks = async () => {
+  const homework = await Homework.find({});
+  return homework;
 };
 
-const deleteCompany = async (_id) => {
-  const company = await Company.findByIdAndDelete(_id)
-  return company;
+const deleteHomework = async (_id) => {
+  const homework = await Homework.findByIdAndDelete(_id)
+  return homework;
 };
 
-const searchCompaniesByKeyWord = async (searchText) => {
+const searchHomeworksByKeyWord = async (searchText) => {
 
   const regex = new RegExp(searchText,'gmi')
 
-  const comp = await Company.find(
+  const comp = await Homework.find(
     {$or:
   [
-    {companyName :{$regex: regex}},
+    {homeworkName :{$regex: regex}},
     {careerUrl :{$regex: regex}},
 ]
 })
@@ -48,34 +46,34 @@ const searchCompaniesByKeyWord = async (searchText) => {
 };
 
 
-const searchCompanies = async (keyword) => {
+const searchHomeworks = async (keyword) => {
   const regex = new RegExp(keyword,'gmi')
-  const company = await Company.find(
+  const homework = await Homework.find(
     {$or:
   [
-    {companyName :{$regex: regex}},
+    {homeworkName :{$regex: regex}},
     {careerUrl :{$regex: regex}},
 ]
 })
-  return company;
+  return homework;
 };
 
-const getCompanyById = async (Id) => {
-  const com = await Company
+const getHomeworkById = async (Id) => {
+  const com = await Homework
   .find({_id:Id})
   return com;
 };
 
 
 module.exports = {
-  createNewCompany,
-  getAllCompanies,
-  searchCompanies,
-  editCompany,
-  deleteCompany,
-  searchCompanies,
-  searchCompaniesByKeyWord,
-  getCompanyById,
+  createNewHomework,
+  getAllHomeworks,
+  searchHomeworks,
+  editHomework,
+  deleteHomework,
+  searchHomeworks,
+  searchHomeworksByKeyWord,
+  getHomeworkById,
    
   };
   

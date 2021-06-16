@@ -5,11 +5,11 @@ const homeworkSchema = mongoose.Schema(
   {
     homeworkName: {
       type: String,
-      required: false,
+      required: true,
       index: true,
       unique:true
     },
-    description: {
+    homeworkUrl: {
       type: String,
     },
     points: {

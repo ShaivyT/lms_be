@@ -1,49 +1,49 @@
 const httpStatus = require('http-status');
-const {companyService, recordService } = require('../services');
+const {homeworkService, recordService } = require('../services');
 
-const createNewCompany = async (req, res) => {
-  const comp = await companyService.createNewCompany(req.body);
+const createNewHomework = async (req, res) => {
+  const comp = await homeworkService.createNewHomework(req.body);
 res.status(httpStatus.CREATED).send(comp);
 };
 
-const deleteCompany = async (req, res) => {
+const deleteHomework = async (req, res) => {
 const {_id} = req.query
 
-const deletedRecs = await recordService.deleteManyByCompanyId(_id);
-const comp = await companyService.deleteCompany(_id);
+const deletedRecs = await recordService.deleteManyByHomeworkId(_id);
+const comp = await homeworkService.deleteHomework(_id);
 res.status(httpStatus.CREATED).send(comp);
 };
 
-const editCompany = async (req, res) => {
-  const comp = await companyService.editCompany(req.body);
+const editHomework = async (req, res) => {
+  const comp = await homeworkService.editHomework(req.body);
 res.status(httpStatus.CREATED).send(comp);
 };
 
-const getAllCompanies = async (req, res) => {
-   comp = await companyService.getAllCompanies()
+const getAllHomeworks = async (req, res) => {
+   comp = await homeworkService.getAllHomeworks()
    res.status(httpStatus.CREATED).send(comp);
 } 
 
-const searchCompanies = async (req, res) => {
+const searchHomeworks = async (req, res) => {
   const {keyword} = req.query
-  comp = await companyService.searchCompanies(keyword)
+  comp = await homeworkService.searchHomeworks(keyword)
   res.status(httpStatus.CREATED).send(comp);
 
 };
 
-const getCompanyById = async (req, res) => {
+const getHomeworkById = async (req, res) => {
   const query= req.query
-  const comp = await companyService.getCompanyById(query.Id);
+  const comp = await homeworkService.getHomeworkById(query.Id);
 res.status(httpStatus.CREATED).send(comp[0]);
 };
 
 
 module.exports = {
-  createNewCompany,
-  getAllCompanies,
-  searchCompanies,
-  editCompany,
-  deleteCompany,
-  getCompanyById
+  createNewHomework,
+  getAllHomeworks,
+  searchHomeworks,
+  editHomework,
+  deleteHomework,
+  getHomeworkById
   
 };

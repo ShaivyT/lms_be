@@ -1,16 +1,16 @@
 const express = require('express');
-const companyController = require('../../controllers/company.controller');
+const homeworkController = require('../../controllers/homework.controller');
 
 const router = express.Router();
 
 //careerUrl 
 
-router.post('/createnewcompany', companyController.createNewCompany);
-router.get('/allcompanies', companyController.getAllCompanies);
-router.get('/searchcompanies', companyController.searchCompanies);//pass in search paramter
-router.put('/editcompany', companyController.editCompany);  // 
-router.delete('/deletecompany', companyController.deleteCompany);  // 
-router.get('/getcompanybyid', companyController.getCompanyById);
+router.post('/createnewhomework', homeworkController.createNewHomework);
+router.get('/allhomeworks', homeworkController.getAllHomeworks);
+router.get('/searchhomeworks', homeworkController.searchHomeworks);//pass in search paramter
+router.put('/edithomework', homeworkController.editHomework);  // 
+router.delete('/deletehomework', homeworkController.deleteHomework);  // 
+router.get('/gethomeworkbyid', homeworkController.getHomeworkById);
 
 
 
